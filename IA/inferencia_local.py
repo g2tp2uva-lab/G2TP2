@@ -7,10 +7,10 @@ import supervision as sv
 
 
 ROOT = Path(__file__).resolve().parent
-IMAGE_FILE = ROOT / "train" / "fotos27abr" / "2026-04-27-101709.jpg"
+IMAGE_FILE = ROOT / "train" / "fotos27abr" / "2026-04-27-101709.jpg" #modificar con el pad de la imagen
 ANNOTATED_DIR = ROOT / "anotated"
-ROBOFLOW_API_KEY = "bqpX4QPrirFPhKE6irny"
-MODEL_ID = "datasetp_v0/6"
+ROBOFLOW_API_KEY = "bqpX******rny" #modificar con tu API KEY de Roboflow
+MODEL_ID = "data*****0/6"            #modificar con tu model_ID
 API_URL = "https://serverless.roboflow.com"
 
 
