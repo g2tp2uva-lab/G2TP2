@@ -1,0 +1,28 @@
+Comandos arranque 
+
+En el host del core:
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -t nat -A POSTROUTING -s 172.16.0.0/24 -o eno1 -j MASQUERADE
+sudo iptables -A FORWARD -s 172.16.0.0/24 -j ACCEPT
+sudo iptables -A FORWARD -d 172.16.0.0/24 -j ACCEPT
+xhost +
+
+En el contenedor del core (terminal 1 - EPC y Mosquitto):
+
+docker start 4Gcore && docker exec -it 4Gcore bash
+sysctl -w net.ipv4.ip_forward=1
+mkdir -p /run/mosquitto && chown mosquitto:mosquitto /run/mosquitto
+cd /etc/mosquitto && mosquitto -c mosquitto.conf -d
+srsepc ~/.config/srsran/epc.conf
+
+En el contenedor del core (terminal 2 - Servidor de control):
+
+docker exec -it 4Gcore bash
+python3 /coche_autonomo.py
+
+En el contenedor del core (terminal 3):
+
+docker exec -it 4Gcore bash
+mosquitto_pub -h localhost -t 3/command -m "AM-Cloud"
+
+
