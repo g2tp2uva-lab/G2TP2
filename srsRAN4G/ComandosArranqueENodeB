@@ -1,0 +1,8 @@
+# Arrancar contenedor
+docker start 4Genode
+docker exec -it 4Genode bash
+
+# Dentro del contenedor, una vez el Core este inicializado (linea SP-GW Initialized)
+bladeRF-cli -l /tmp/hostedxA9.rbf
+sysctl -w net.ipv4.ip_forward=1
+srsenb ~/.config/srsran/enb.conf
