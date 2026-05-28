@@ -2,15 +2,15 @@ from ultralytics import YOLO
 from roboflow import Roboflow
 import os
 
-# 1. Descargar el dataset desde Roboflow (opcional si ya lo tienes)
-#rf = Roboflow(api_key="bqpX4QPrirFPhKE6irny")
-#project = rf.workspace("cocheconectado").project("datasetp_v0")
-#version = project.version(6)
+# 1. Descargar el dataset desde Roboflow, en caso de no tenerlo en local 
+#rf = Roboflow(api_key="bqp*******rny")        #indicar la API KEY de Roboflow
+#project = rf.workspace("cocheconectado").project("data******0")        #indica el directorio del workspace
+#version = project.version(7)
 #dataset = version.download("yolov11")
 
 # 2. Cargar tu modelo con los pesos .pt
 model = YOLO('weights.pt')
-path_yaml = 'DatasetP_v0-6/data.yaml'
+path_yaml = 'Data*****0-6/data.yaml'        #indica aqui el path hasta el fichero data.yalm 
 
 # 3. Ejecutar la validación en el set de TEST
 # El archivo data.yaml descargado de Roboflow ya tiene las rutas configuradas
